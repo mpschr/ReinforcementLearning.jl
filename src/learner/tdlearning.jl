@@ -1,10 +1,10 @@
 """
     mutable struct TDLearner{T,Tp}
-        ns::Int64 = 10
-        na::Int64 = 4
-        γ::Float64 = .9
-        λ::Float64 = .8
-        α::Float64 = .1
+        ns::Int64 = 10       # ?
+        na::Int64 = 4        # ?
+        γ::Float64 = .9      # Gamma discount factor/rate.
+        λ::Float64 = .8      # λ ∈[0,1] (λ * γ defines the concept of 'recent')
+        α::Float64 = .1      # TD learning rate.
         nsteps::Int64 = 1
         initvalue::Float64 = 0.
         unseenvalue::Float64 = initvalue == Inf64 ? 0. : initvalue
@@ -12,6 +12,9 @@
         tracekind = DataType = λ == 0 ? NoTraces : ReplacingTraces
         traces::T = tracekind == NoTraces ? NoTraces() : tracekind(ns, na, λ, γ)
         endvaluepolicy::Tp = SarsaEndPolicy()
+
+alpha: 
+        epsilon: 
 """
 @with_kw mutable struct TDLearner{T,Tp}
     ns::Int64 = 10
